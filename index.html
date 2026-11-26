@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8E0SRTKMRB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8E0SRTKMRB');</script>
+<meta name="robots" content="noindex, nofollow"><!-- 2026-11-20: 문구 검수 끝날 때까지 검색 노출 차단 -->
+<title>FabWatch — Satellite Intelligence for Semiconductor Fabs & AI Data Centers</title>
+<meta name="description" content="FabWatch monitors 24 semiconductor fabs and 9 AI data centers using 6 satellite channels. Real-time utilization tracking, construction progress, and supply chain intelligence for analysts, investors, and policymakers.">
+<meta property="og:title" content="FabWatch — Satellite Intelligence for Semiconductor Fabs & AI Data Centers">
+<meta property="og:description" content="Monitor 24 semiconductor fabs and 9 AI data centers with 6 satellite channels. Real-time utilization data, construction tracking, and supply chain intelligence.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fabwatch.co.kr">
+<meta property="og:image" content="https://fabwatch.co.kr/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FabWatch — Satellite Intelligence for Semiconductor Fabs & AI Data Centers">
+<meta name="twitter:description" content="24 fabs + 9 data centers. 6 satellite channels. One dashboard.">
+<meta name="twitter:image" content="https://fabwatch.co.kr/og-image.png">
+<link rel="canonical" href="https://fabwatch.co.kr">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=cc4ce246">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0B1628" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      </span>
+      FabWatch
+    </a>
+    <ul class="nav-links">
+      <li><a href="/monitoring/" class="hide-xs" data-nav="monitoring"><span class="en">Monitoring</span><span class="ko">모니터링</span><span class="ja">モニタリング</span></a></li>
+      <li><a href="/reports/" class="hide-xs" data-nav="reports"><span class="en">Reports</span><span class="ko">리포트</span><span class="ja">レポート</span></a></li>
+      <li><a href="/pricing/" class="hide-mobile" data-nav="pricing"><span class="en">Pricing</span><span class="ko">요금제</span><span class="ja">料金</span></a></li>
+      <li><a href="/about/" class="hide-mobile" data-nav="about"><span class="en">About</span><span class="ko">회사 소개</span><span class="ja">会社概要</span></a></li>
+      <li><select class="lang-toggle" onchange="setLang(this.value)" aria-label="Language"><option value="en">EN</option><option value="ko">KO</option><option value="ja">JA</option></select></li>
+      <li><a href="#" onclick="openModal();return false;" class="nav-cta"><span class="en">Get Early Access</span><span class="ko">얼리 액세스</span><span class="ja">アーリーアクセス</span></a></li>
+      <li class="nav-burger-li"><button type="button" class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer" onclick="toggleNavMenu()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button></li>
+    </ul>
+  </div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="/monitoring/" data-nav="monitoring"><span class="en">Monitoring Dashboard</span><span class="ko">모니터링 대시보드</span><span class="ja">モニタリング・ダッシュボード</span></a>
+    <a href="/reports/" data-nav="reports"><span class="en">Sample Reports</span><span class="ko">샘플 리포트</span><span class="ja">サンプルレポート</span></a>
+    <a href="/pricing/" data-nav="pricing"><span class="en">Pricing</span><span class="ko">요금제</span><span class="ja">料金</span></a>
+    <a href="/about/" data-nav="about"><span class="en">About</span><span class="ko">회사 소개</span><span class="ja">会社概要</span></a>
+    <a href="#" onclick="toggleNavMenu(false);openModal();return false;" class="nav-drawer-cta"><span class="en">Join the Waitlist</span><span class="ko">대기 등록하기</span><span class="ja">ウェイトリストに登録</span></a>
+  </div>
+</nav>
+
+<!-- HERO (2026-11-24 redesign: full-bleed Sentinel-2 scene) -->
+<section class="hero hero-sat">
+  <div class="hero-media" aria-hidden="true">
+    <img src="/assets/img/sat/hero-arizona-2026-11.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+    <div class="hero-scan"></div>
+    <div class="hero-target" style="left:59.2%;top:27.4%;width:25.6%;height:29.6%;">
+      <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+      <div class="hero-target-tag">
+        <b>TSMC Fab 21</b> · Arizona<br>
+        <span>SENTINEL-2 · 2026-11-07</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="inner">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span class="en">Monitoring 33 industrial facilities in 6 countries + EU</span>
+      <span class="ko">6개국+EU 33개 첨단산업 시설 모니터링 중</span><span class="ja">6か国＋EUの先端産業施設33か所をモニタリング中</span>
+    </div>
+    <h1>
+      <span class="en">See What <span class="accent-word">Satellites</span> See.<br>Track Every Critical Facility.</span>
+      <span class="ko"><span class="accent-word">위성</span>이 포착한 진실,<br>공시보다 빠르게.</span><span class="ja"><span class="accent-word">衛星</span>が捉えた事実を、<br>開示よりも早く。</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="en">Six independent satellite channels monitoring semiconductor fabs and AI data centers worldwide. Cross-referencing orbital data with public filings to deliver intelligence weeks before official disclosures.</span>
+      <span class="ko">6개 독립 위성 채널로 전 세계 반도체 팹과 AI 데이터센터를 추적합니다. 궤도 데이터와 공시 자료를 교차 검증하여 공식 발표 수주 전에 인사이트를 제공합니다.</span><span class="ja">6つの独立した衛星チャネルで、世界の半導体ファブとAIデータセンターを追跡。軌道データと開示資料をクロスチェックし、公式発表の数週間前にインサイトを提供します。</span>
+    </p>
+    <div class="hero-actions">
+      <a href="#" onclick="openModal();return false;" class="btn btn-primary">
+        <span class="en">Join the Waitlist</span>
+        <span class="ko">대기 등록하기</span><span class="ja">ウェイトリストに登録</span>
+      </a>
+      <a href="/monitoring/" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="en">See Dashboard</span>
+        <span class="ko">대시보드 보기</span><span class="ja">ダッシュボードを見る</span>
+      </a>
+      <a href="/reports/" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span class="en">Sample Reports</span><span class="ko">샘플 리포트 보기</span><span class="ja">サンプルレポートを見る</span>
+      </a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-num"><span class="highlight" data-count="24">24</span></div>
+        <div class="stat-label"><span class="en">Semiconductor Fabs</span><span class="ko">반도체 팹</span><span class="ja">半導体ファブ</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="highlight" data-count="9">9</span>+</div>
+        <div class="stat-label"><span class="en">AI Data Centers</span><span class="ko">AI 데이터센터</span><span class="ja">AIデータセンター</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="highlight" data-count="6">6</span></div>
+        <div class="stat-label"><span class="en">Satellite Channels</span><span class="ko">위성 채널</span><span class="ja">衛星チャネル</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="highlight" data-count="3">3</span></div>
+        <div class="stat-label"><span class="en">Reports Published</span><span class="ko">발행 리포트</span><span class="ja">発行レポート</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-credit">Contains modified Copernicus Sentinel data 2026, processed via Microsoft Planetary Computer</div>
+</section>
+
+<!-- DATA SOURCE TRUST STRIP -->
+<section class="trust-strip">
+  <div class="inner">
+    <div class="trust-label"><span class="en">Powered by open satellite data from</span><span class="ko">공개 위성 데이터 기반</span><span class="ja">オープン衛星データを活用</span></div>
+    <div class="trust-logos">
+      <!-- NASA -->
+      <svg viewBox="0 0 110 30" fill="var(--fg)"><text x="0" y="22" font-family="var(--font-display)" font-weight="800" font-size="20" letter-spacing="3">NASA</text></svg>
+      <!-- ESA -->
+      <svg viewBox="0 0 80 30" fill="var(--fg)"><text x="0" y="22" font-family="var(--font-display)" font-weight="700" font-size="18" letter-spacing="2">ESA</text></svg>
+      <!-- USGS -->
+      <svg viewBox="0 0 90 30" fill="var(--fg)"><text x="0" y="22" font-family="var(--font-display)" font-weight="700" font-size="17" letter-spacing="1.5">USGS</text></svg>
+      <!-- Copernicus -->
+      <svg viewBox="0 0 140 30" fill="var(--fg)"><text x="0" y="22" font-family="var(--font-body)" font-weight="600" font-size="16">Copernicus</text></svg>
+      <!-- NOAA -->
+      <svg viewBox="0 0 90 30" fill="var(--fg)"><text x="0" y="22" font-family="var(--font-display)" font-weight="700" font-size="17" letter-spacing="1.5">NOAA</text></svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF: BEFORE / AFTER (2026-11-24) -->
+<section class="proof section">
+  <div class="inner proof-grid">
+    <div class="proof-copy">
+      <div class="section-label"><span class="en">Seen from orbit</span><span class="ko">궤도에서 본 변화</span><span class="ja">軌道から見た変化</span></div>
+      <h2 class="section-title reveal">
+        <span class="en">Desert to fab<br><span class="grad-text">in five years.</span></span>
+        <span class="ko">사막이 팹이 되기까지,<br><span class="grad-text">5년의 기록.</span></span>
+        <span class="ja">砂漠がファブになるまで、<br><span class="grad-text">5年の記録。</span></span>
+      </h2>
+      <p class="section-desc">
+        <span class="en">The same 4 × 2.6 km frame north of Phoenix, March 2021 and November 2026. Every pad, cleanroom shell and substation shows up in open satellite data long before it shows up in a press release.</span>
+        <span class="ko">피닉스 북쪽 같은 4 × 2.6km 구역을 2021년 3월과 2026년 11월에 찍은 영상입니다. 부지 정지, 클린룸 건물, 변전소는 보도자료보다 먼저 공개 위성 영상에 나타납니다.</span>
+        <span class="ja">フェニックス北部の同じ4 × 2.6 km範囲を、2021年3月と2026年11月に撮影した画像です。造成、クリーンルーム棟、変電所は、プレスリリースより先に公開衛星データに現れます。</span>
+      </p>
+      <ul class="proof-facts">
+        <li><b>2021-03-03</b><span class="en">Undeveloped desert</span><span class="ko">개발 전 사막</span><span class="ja">未開発の砂漠</span></li>
+        <li><b>2026-11-07</b><span class="en">Fab buildings, utilities, parking</span><span class="ko">팹 건물·설비·주차장</span><span class="ja">ファブ棟・設備・駐車場</span></li>
+      </ul>
+      <p class="proof-hint"><span class="en">Drag the handle to compare →</span><span class="ko">손잡이를 밀어 비교해 보세요 →</span><span class="ja">ハンドルをドラッグして比較 →</span></p>
+    </div>
+    <figure class="ba" data-ba>
+      <img src="/assets/img/sat/arizona-2026-11.jpg" alt="TSMC Arizona site, Sentinel-2, 2026-11-07" width="1200" height="780" loading="lazy">
+      <div class="ba-before"><img src="/assets/img/sat/arizona-2021-03.jpg" alt="Same site, Sentinel-2, 2021-03-03" width="1200" height="780" loading="lazy"></div>
+      <span class="ba-tag ba-tag-l">2021-03</span><span class="ba-tag ba-tag-r">2026-11</span>
+      <div class="ba-handle" aria-hidden="true"><span></span></div>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before / after">
+      <figcaption>Contains modified Copernicus Sentinel data 2021–2026</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- SERVICE OVERVIEW: 모니터링 vs 리포트 -->
+<section class="svc-overview section" id="services">
+  <div class="inner">
+    <div class="section-label"><span class="en">Our Services</span><span class="ko">서비스 구성</span><span class="ja">サービス構成</span></div>
+    <h2 class="section-title reveal">
+      <span class="en">Two ways to use FabWatch</span>
+      <span class="ko">FabWatch를 활용하는 두 가지 방법</span><span class="ja">FabWatchの2つの使い方</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Choose real-time monitoring or curated reports — or both. Each serves a different decision-making need.</span>
+      <span class="ko">실시간 모니터링과 전문 리포트 중 선택하세요. 각각 다른 의사결정 니즈에 맞춰 설계되었습니다.</span><span class="ja">リアルタイムのモニタリングと専門レポートからお選びください。それぞれ異なる意思決定ニーズに合わせて設計されています。</span>
+    </p>
+    <div class="svc-grid">
+      <!-- 모니터링 플랫폼 -->
+      <div class="svc-card svc-monitor">
+        <span class="svc-card-badge"><span class="en">PLATFORM</span><span class="ko">플랫폼</span><span class="ja">プラットフォーム</span></span>
+        <a href="/monitoring/" class="svc-shot" aria-label="Monitoring dashboard demo"><img class="en" src="/assets/img/dashboard-en.jpg" alt="FabWatch dashboard" loading="lazy" width="960" height="611"><img class="ko" src="/assets/img/dashboard-ko.jpg" alt="FabWatch dashboard" loading="lazy" width="960" height="611"><img class="ja" src="/assets/img/dashboard-ja.jpg" alt="FabWatch dashboard" loading="lazy" width="960" height="611"></a>
+        <h3><span class="en">Monitoring Dashboard</span><span class="ko">모니터링 대시보드</span><span class="ja">モニタリング・ダッシュボード</span></h3>
+        <p class="svc-desc">
+          <span class="en">Web-based intelligence dashboard. Track 24 fabs with weekly satellite updates, anomaly alerts, and 3-year trend visualization. Detect construction starts, utilization shifts, and capacity expansions — all from your browser.</span>
+          <span class="ko">웹 기반 인텔리전스 대시보드. 24개 팹을 주간 위성 업데이트, 이상 감지 알림, 3년치 트렌드 시각화로 추적합니다. 착공, 가동률 변동, 증설을 브라우저에서 한눈에 파악하세요.</span><span class="ja">Webベースのインテリジェンス・ダッシュボード。24のファブを、週次の衛星更新、異常検知アラート、3年分のトレンド可視化で追跡します。着工、稼働率の変動、増設をブラウザで一目で把握できます。</span>
+        </p>
+        <ul class="svc-features">
+          <li><span class="ico" style="color:var(--accent);">&#9670;</span> <span class="en">Interactive global fab map</span><span class="ko">인터랙티브 글로벌 팹 지도</span><span class="ja">インタラクティブな世界ファブマップ</span></li>
+          <li><span class="ico" style="color:var(--accent);">&#9670;</span> <span class="en">6-channel signal dashboard per fab</span><span class="ko">팹별 6채널 신호 대시보드</span><span class="ja">ファブごとの6チャネル・シグナルダッシュボード</span></li>
+          <li><span class="ico" style="color:var(--accent);">&#9670;</span> <span class="en">Email / Slack / Kakao alerts</span><span class="ko">이메일 / Slack / 카카오톡 알림</span><span class="ja">メール／Slack／カカオトークのアラート</span></li>
+          <li><span class="ico" style="color:var(--accent);">&#9670;</span> <span class="en">API access for data integration</span><span class="ko">데이터 연동 API 제공</span><span class="ja">データ連携用API</span></li>
+          <li><span class="ico" style="color:var(--accent);">&#9670;</span> <span class="en">Historical time-series (3 years)</span><span class="ko">과거 시계열 데이터 (3년분)</span><span class="ja">過去の時系列データ（3年分）</span></li>
+        </ul>
+        <div style="font-size:13px;color:var(--fg-muted);margin-top:4px;">
+          <span class="en">Included in Pro &amp; Enterprise plans</span>
+          <span class="ko">Pro / Enterprise 요금제에 포함</span><span class="ja">Pro／Enterpriseプランに含まれます</span>
+        </div>
+        <a href="/monitoring/" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;"><span class="en">Open the live demo →</span><span class="ko">대시보드 데모 보기 →</span><span class="ja">ダッシュボードのデモを見る →</span></a>
+      </div>
+      <!-- 리포트 서비스 -->
+      <div class="svc-card svc-report">
+        <span class="svc-card-badge"><span class="en">REPORTS</span><span class="ko">리포트</span><span class="ja">レポート</span></span>
+        <a href="/reports/" class="svc-covers" aria-label="Sample reports"><span class="svc-cover"><img class="en" src="/assets/img/cover-cxmt-hefei-en.jpg" alt="sample report" loading="lazy" width="420" height="420"><img class="ko" src="/assets/img/cover-cxmt-hefei-ko.jpg" alt="sample report" loading="lazy" width="420" height="420"><img class="ja" src="/assets/img/cover-cxmt-hefei-ja.jpg" alt="sample report" loading="lazy" width="420" height="420"></span><span class="svc-cover"><img class="en" src="/assets/img/cover-meta-hyperion-en.jpg" alt="sample report" loading="lazy" width="420" height="420"><img class="ko" src="/assets/img/cover-meta-hyperion-ko.jpg" alt="sample report" loading="lazy" width="420" height="420"><img class="ja" src="/assets/img/cover-meta-hyperion-ja.jpg" alt="sample report" loading="lazy" width="420" height="420"></span></a>
+        <h3><span class="en">Analysis Reports</span><span class="ko">분석 리포트</span><span class="ja">分析レポート</span></h3>
+        <p class="svc-desc">
+          <span class="en">Analyst-grade satellite intelligence reports. Each report cross-validates satellite imagery with public filings, construction permits, and industry databases. Delivered as PDF with time-series charts, satellite comparisons, and strategic recommendations.</span>
+          <span class="ko">애널리스트급 위성 인텔리전스 리포트. 위성 영상을 공시 자료, 건축 허가, 산업 데이터베이스와 교차 검증합니다. 시계열 차트, 위성 비교 영상, 전략적 제언을 담은 PDF로 제공합니다.</span><span class="ja">アナリスト水準の衛星インテリジェンス・レポート。衛星画像を開示資料、建築許可、業界データベースとクロスチェックします。時系列チャート、衛星比較画像、戦略的提言をまとめたPDFでお届けします。</span>
+        </p>
+        <ul class="svc-features">
+          <li><span class="ico" style="color:var(--accent-warm);">&#9670;</span> <span class="en">Monthly highlight report (free)</span><span class="ko">월간 하이라이트 리포트 (무료)</span><span class="ja">月次ハイライトレポート（無料）</span></li>
+          <li><span class="ico" style="color:var(--accent-warm);">&#9670;</span> <span class="en">Deep dive: single fab analysis</span><span class="ko">심층 분석: 개별 팹 리포트</span><span class="ja">詳細分析：個別ファブレポート</span></li>
+          <li><span class="ico" style="color:var(--accent-warm);">&#9670;</span> <span class="en">Regional report (China / Korea / US)</span><span class="ko">지역 리포트 (중국 / 한국 / 미국)</span><span class="ja">地域レポート（中国／韓国／米国）</span></li>
+          <li><span class="ico" style="color:var(--accent-warm);">&#9670;</span> <span class="en">Custom analysis on request</span><span class="ko">맞춤형 분석 의뢰 가능</span><span class="ja">カスタム分析のご依頼に対応</span></li>
+          <li><span class="ico" style="color:var(--accent-warm);">&#9670;</span> <span class="en">Enterprise white-label available</span><span class="ko">기업 화이트라벨 리포트 제공</span><span class="ja">企業向けホワイトラベル提供</span></li>
+        </ul>
+        <div style="font-size:13px;color:var(--fg-muted);margin-top:4px;">
+          <span class="en">Free monthly report for all members — premium reports sold separately</span>
+          <span class="ko">월간 무료 리포트 전원 제공 — 프리미엄 리포트 별도 구매</span><span class="ja">月次無料レポートを全会員に提供 — プレミアムレポートは別途販売</span>
+        </div>
+        <a href="/reports/" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent-warm);text-decoration:none;"><span class="en">Read sample reports →</span><span class="ko">샘플 리포트 보기 →</span><span class="ja">サンプルレポートを読む →</span></a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:14px;"><a href="/pricing/" style="color:var(--fg-muted);"><span class="en">Compare plans and pricing</span><span class="ko">요금제 비교 보기</span><span class="ja">料金プランを比較する</span></a></p>
+  </div>
+</section>
+
+<!-- VALUE PROPOSITIONS -->
+<section class="values section">
+  <div class="inner">
+    <div class="section-label"><span class="en">Why FabWatch</span><span class="ko">왜 FabWatch인가</span><span class="ja">FabWatchを選ぶ理由</span></div>
+    <h2 class="section-title reveal">
+      <span class="en">What satellites reveal,<br>reports can't.</span>
+      <span class="ko">위성이 밝히는 진실,<br>보고서로는 알 수 없습니다.</span><span class="ja">衛星が明かす事実は、<br>レポートには載らない。</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">Corporate disclosures tell you what companies want to say. Six satellite channels tell you what's actually happening on the ground.</span>
+      <span class="ko">기업 공시는 기업이 말하고 싶은 것만 알려줍니다. 6개 위성 채널은 현장에서 실제로 일어나는 일을 보여줍니다.</span><span class="ja">企業開示は、企業が伝えたいことしか語りません。6つの衛星チャネルは、現場で実際に起きていることを示します。</span>
+    </p>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(56,189,248,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h3><span class="en">Independent Verification</span><span class="ko">독립적 검증</span><span class="ja">独立した検証</span></h3>
+        <p>
+          <span class="en">No reliance on self-reported data. When a Chinese fab claims construction is on schedule, our satellites confirm — or contradict — the claim directly.</span>
+          <span class="ko">자체 보고 데이터에 의존하지 않습니다. 중국 팹이 일정대로 건설 중이라고 발표할 때, 우리 위성이 직접 확인하거나 반박합니다.</span><span class="ja">自己申告データには頼りません。中国のファブが「建設は予定どおり」と発表したとき、私たちの衛星がそれを直接裏付け、あるいは否定します。</span>
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(245,158,11,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="2" stroke-linecap="round"><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/><circle cx="12" cy="12" r="5"/></svg>
+        </div>
+        <h3><span class="en">Multi-Channel Intelligence</span><span class="ko">다중 채널 인텔리전스</span><span class="ja">マルチチャネル・インテリジェンス</span></h3>
+        <p>
+          <span class="en">Nightlight, radar, thermal IR, NO2, vegetation, and optical — six channels cross-verify every signal. One channel can deceive. Six cannot.</span>
+          <span class="ko">야간조명, 레이더, 열적외선, NO2, 식생, 광학 — 6개 채널이 모든 신호를 교차 검증합니다. 하나는 속일 수 있어도, 여섯은 속일 수 없습니다.</span><span class="ja">夜間光、レーダー、熱赤外、NO2、植生、光学 — 6つのチャネルがすべてのシグナルをクロスチェックします。1つはごまかせても、6つはごまかせません。</span>
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(34,197,94,0.1);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3><span class="en">Early Signal Detection</span><span class="ko">조기 신호 감지</span><span class="ja">早期シグナル検知</span></h3>
+        <p>
+          <span class="en">Nightlight and thermal signals can shift weeks before a shutdown or ramp-up is announced. Our alerts are built to catch capacity changes before the market does.</span>
+          <span class="ko">야간조명과 열 신호는 셧다운이나 램프업 발표보다 몇 주 먼저 변할 수 있습니다. FabWatch 알림은 시장보다 먼저 생산능력 변화를 포착하도록 설계되었습니다.</span><span class="ja">夜間光や熱のシグナルは、停止やランプアップの発表より数週間早く変化することがあります。FabWatchのアラートは、市場より先に生産能力の変化を捉えるよう設計されています。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq section" id="faq">
+  <div class="inner">
+    <div class="section-label"><span class="en">FAQ</span><span class="ko">자주 묻는 질문</span><span class="ja">よくある質問</span></div>
+    <h2 class="section-title reveal">
+      <span class="en">Questions answered</span>
+      <span class="ko">궁금하신 점</span><span class="ja">ご質問への回答</span>
+    </h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">How accurate is satellite-based fab monitoring?</span><span class="ko">위성 기반 팹 모니터링의 정확도는 어느 정도인가요?</span><span class="ja">衛星によるファブモニタリングの精度はどの程度ですか？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">We validate our VIIRS nightlight index against fab utilization figures published by industry trackers such as TrendForce, and cross-check every signal with SAR, thermal IR, and NO2 data. Fab-by-fab validation results will be published at launch; accuracy improves as the historical baseline grows.</span>
+          <span class="ko">FabWatch는 VIIRS 야간조명 지수를 TrendForce 등 산업 트래커가 발표하는 팹 가동률 자료와 대조해 검증하고, 모든 신호를 SAR·열적외선·NO2 데이터로 교차 확인합니다. 팹별 검증 결과는 출시와 함께 공개할 예정이며, 과거 기준 데이터가 쌓일수록 정확도가 높아집니다.</span><span class="ja">FabWatchはVIIRS夜間光指数を、TrendForceなどの業界トラッカーが発表するファブ稼働率と照合して検証し、すべてのシグナルをSAR・熱赤外・NO2データでクロスチェックしています。ファブごとの検証結果はリリース時に公開する予定で、過去の基準データが蓄積されるほど精度が高まります。</span>
+        </div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">How often is the data updated?</span><span class="ko">데이터 업데이트 주기는 어떻게 되나요?</span><span class="ja">データの更新頻度は？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">VIIRS nightlight data updates daily. Sentinel-1 SAR revisits every 6-12 days. Sentinel-2 optical every 5 days (weather permitting). We aggregate these into a composite score updated at least twice weekly for each fab.</span>
+          <span class="ko">VIIRS 야간조명은 매일, Sentinel-1 SAR은 6~12일, Sentinel-2 광학은 5일 주기로 갱신됩니다. 이를 종합하여 각 팹별 복합 점수를 주 2회 이상 업데이트합니다.</span><span class="ja">VIIRS夜間光は毎日、Sentinel-1 SARは6〜12日、Sentinel-2光学は5日周期（天候による）で更新されます。これらを統合し、各ファブの複合スコアを週2回以上更新します。</span>
+        </div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">Do you offer NDAs for enterprise clients?</span><span class="ko">기업 고객에게 NDA 제공이 가능한가요?</span><span class="ja">法人のお客様とNDAを締結できますか？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">Yes. Enterprise plans include a bilateral NDA, custom SLA, and data handling agreements. Specific compliance requirements can be discussed with our enterprise team.</span>
+          <span class="ko">네, Enterprise 요금제에는 쌍방 NDA, 맞춤 SLA, 데이터 취급 계약이 포함됩니다. 특정 컴플라이언스 요구사항은 기업 영업팀과 협의해 주세요.</span><span class="ja">はい。Enterpriseプランには相互NDA、カスタムSLA、データ取扱契約が含まれます。特定のコンプライアンス要件については、法人営業チームにご相談ください。</span>
+        </div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">Can I request monitoring for a specific fab?</span><span class="ko">특정 팹 모니터링을 요청할 수 있나요?</span><span class="ja">特定のファブのモニタリングを依頼できますか？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">Absolutely. Pro users can request up to 5 custom fabs, and Enterprise users get unlimited custom monitoring targets. New fabs come with historical baseline data from public satellite archives.</span>
+          <span class="ko">물론입니다. Pro 사용자는 최대 5개, Enterprise 사용자는 무제한 맞춤 팹 요청이 가능합니다. 신규 팹에는 공개 위성 아카이브의 과거 기준 데이터가 함께 제공됩니다.</span><span class="ja">もちろんです。Proユーザーは最大5か所、Enterpriseユーザーは無制限にカスタムファブを依頼できます。新しいファブには、公開衛星アーカイブの過去の基準データが付きます。</span>
+        </div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">What's the difference between the dashboard and reports?</span><span class="ko">대시보드와 리포트의 차이는 무엇인가요?</span><span class="ja">ダッシュボードとレポートの違いは何ですか？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">The dashboard is a real-time SaaS platform — you log in and see live data, charts, and alerts for all 24 fabs. Reports are curated PDF/slide analyses written by our team: deep dives on specific fabs, countries, or market events. Pro includes both; Free gets the monthly highlight report and open data.</span>
+          <span class="ko">대시보드는 실시간 SaaS 플랫폼입니다 — 로그인하면 24개 팹의 라이브 데이터, 차트, 알림을 볼 수 있습니다. 리포트는 FabWatch 팀이 작성하는 PDF/슬라이드 형태의 심층 분석입니다. Pro는 둘 다 포함하며, Free는 제한된 대시보드 접근과 샘플 리포트를 제공합니다.</span><span class="ja">ダッシュボードはリアルタイムのSaaSプラットフォームです — ログインすると24ファブのライブデータ、チャート、アラートを確認できます。レポートはFabWatchチームが作成するPDF／スライド形式の詳細分析です。Proには両方が含まれ、Freeでは限定的なダッシュボードアクセスとサンプルレポートを提供します。</span>
+        </div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="en">Is the satellite data legally obtained?</span><span class="ko">위성 데이터는 합법적으로 수집되나요?</span><span class="ja">衛星データは合法的に取得されていますか？</span></span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <span class="en">100%. All data comes from publicly available satellite programs: NASA VIIRS, ESA Copernicus (Sentinel-1/2/5P), and USGS Landsat. These are open-access, government-operated Earth observation programs designed for environmental and commercial monitoring.</span>
+          <span class="ko">100% 합법입니다. 모든 데이터는 공개 위성 프로그램에서 수집됩니다: NASA VIIRS, ESA 코페르니쿠스(Sentinel-1/2/5P), USGS 랜드샛. 이들은 환경 및 상업적 모니터링을 위해 설계된 정부 운영 공개 지구관측 프로그램입니다.</span><span class="ja">100%合法です。すべてのデータは公開衛星プログラムから取得しています：NASA VIIRS、ESAコペルニクス（Sentinel-1/2/5P）、USGSランドサット。これらは環境・商業モニタリングのために設計された、政府運営のオープンな地球観測プログラムです。</span>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta section" id="cta">
+  <!-- Earth glow -->
+  <svg class="cta-earth" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="150" r="120" fill="url(#ctaEarth)"/>
+    <ellipse cx="120" cy="120" rx="40" ry="30" fill="rgba(34,197,94,0.2)" transform="rotate(-10 120 120)"/>
+    <ellipse cx="170" cy="160" rx="35" ry="45" fill="rgba(34,197,94,0.15)" transform="rotate(15 170 160)"/>
+    <circle cx="150" cy="150" r="125" stroke="rgba(56,189,248,0.2)" stroke-width="4"/>
+    <circle cx="150" cy="150" r="135" stroke="rgba(56,189,248,0.08)" stroke-width="3"/>
+    <defs>
+      <radialGradient id="ctaEarth" cx="35%" cy="35%">
+        <stop offset="0%" stop-color="#1E3A5F"/>
+        <stop offset="100%" stop-color="#0B1628"/>
+      </radialGradient>
+    </defs>
+  </svg>
+  <div class="inner" style="position:relative;z-index:1;">
+    <div class="section-label" style="text-align:center;"><span class="en">Get Started</span><span class="ko">시작하기</span><span class="ja">はじめる</span></div>
+    <h2 class="section-title reveal">
+      <span class="en">Stop guessing.<br>Start seeing.</span>
+      <span class="ko">추측을 멈추세요.<br>직접 보세요.</span><span class="ja">推測をやめて、<br>自分の目で確かめよう。</span>
+    </h2>
+    <p class="section-desc">
+      <span class="en">3 reports published. 24 fabs tracked. 6 satellite channels running. Join the analysts, investors, and policymakers who verify semiconductor activity from orbit — not from press releases.</span>
+      <span class="ko">3건의 리포트 발행. 24개 팹 추적 중. 6개 위성 채널 가동 중. 보도자료가 아닌 궤도에서 반도체 현장을 검증하는 전문가 대열에 합류하세요.</span><span class="ja">レポート3件発行。24ファブを追跡中。6つの衛星チャネルが稼働中。プレスリリースではなく軌道から半導体の現場を検証する専門家の仲間に加わりましょう。</span>
+    </p>
+    <div class="hero-actions">
+      <a href="#" onclick="openModal();return false;" class="btn btn-primary"><span class="en">Join the Waitlist</span><span class="ko">대기 등록하기</span><span class="ja">ウェイトリストに登録</span></a>
+      <a href="#" onclick="openModal();return false;" class="btn btn-outline"><span class="en">Request Enterprise Demo</span><span class="ko">기업 도입 데모 요청</span><span class="ja">法人向けデモを依頼</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal-overlay legal-modal" id="privacyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLegal('privacyModal')">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1628" stroke-width="2.5" stroke-linecap="round" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        FabWatch
+      </div>
+      <p class="modal-subtitle">
+        <span class="en">Privacy Policy</span>
+        <span class="ko">개인정보처리방침</span><span class="ja">プライバシーポリシー</span>
+      </p>
+    </div>
+    <div class="modal-body">
+      <div class="legal-content">
+        <div class="effective">
+          <span class="en">Effective: November 19, 2026</span>
+          <span class="ko">시행일: 2026년 11월 19일</span><span class="ja">施行日：2026年11月19日</span>
+        </div>
+        <span class="en">
+        <h3>1. Data controller</h3>
+        <p>FabWatch is operated by ATS Inc. (주식회사 에이티에스), CEO Wooyeon Son, located at 321-7 Opoan-ro, Gwangju-si, Gyeonggi-do, Republic of Korea (Business Registration No. 758-86-03148). For privacy inquiries, contact <a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a>.</p>
+        <h3>2. Personal information collected</h3>
+        <p>We collect only the minimum information necessary to provide our services:</p>
+        <ul>
+          <li><strong>Account registration:</strong> Name, email address, company name (optional), password (hashed)</li>
+          <li><strong>Newsletter subscription:</strong> Email address</li>
+          <li><strong>Service usage:</strong> Access logs, IP address, browser type, pages visited</li>
+          <li><strong>Cookies:</strong> Session cookies and analytics cookies (Google Analytics)</li>
+        </ul>
+        <h3>3. Purpose of collection</h3>
+        <ul>
+          <li>Account creation and authentication</li>
+          <li>Delivery of monitoring dashboard and analysis reports</li>
+          <li>Sending newsletters and service notifications</li>
+          <li>Service improvement through usage analytics</li>
+          <li>Customer support and inquiry handling</li>
+        </ul>
+        <h3>4. Retention and disposal</h3>
+        <p>Personal information is retained for the duration of service membership. Upon account deletion, all personal data is permanently destroyed within 30 days, except where retention is required by applicable law (e.g., electronic commerce records: 5 years).</p>
+        <h3>5. Third-party disclosure</h3>
+        <p>We do not sell, trade, or rent your personal information. Data may be shared with:</p>
+        <ul>
+          <li><strong>Google Analytics:</strong> Anonymized usage statistics for service improvement</li>
+          <li><strong>Payment processors:</strong> Billing information for paid subscriptions (processed by third-party payment gateway; we do not store card details)</li>
+        </ul>
+        <h3>6. User rights</h3>
+        <p>You may at any time: access, correct, or delete your personal information; withdraw consent for data processing; request data portability; or unsubscribe from communications. Contact <a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a> or use in-app settings.</p>
+        <h3>7. Data security</h3>
+        <p>We implement industry-standard security measures including HTTPS encryption, hashed password storage, access control, and regular security audits to protect your information.</p>
+        <h3>8. Cookies and tracking</h3>
+        <p>FabWatch uses essential cookies for site functionality and Google Analytics (GA4) for anonymous usage statistics. You may disable non-essential cookies through your browser settings. Disabling cookies may limit some features.</p>
+        <h3>9. Changes to this policy</h3>
+        <p>Material changes will be announced via email or on-site notice at least 7 days before taking effect. Continued use after the effective date constitutes acceptance.</p>
+        </span>
+        <span class="ko">
+        <h3>1. 개인정보처리자</h3>
+        <p>FabWatch는 주식회사 에이티에스(ATS, 대표 손우연)가 운영합니다. 소재지: 경기도 광주시 오포안로 321-7, 사업자등록번호: 758-86-03148. 개인정보 관련 문의: <a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a></p>
+        <h3>2. 수집하는 개인정보</h3>
+        <p>서비스 제공에 필요한 최소한의 정보만 수집합니다:</p>
+        <ul>
+          <li><strong>회원가입:</strong> 이름, 이메일 주소, 회사명(선택), 비밀번호(암호화 저장)</li>
+          <li><strong>뉴스레터 구독:</strong> 이메일 주소</li>
+          <li><strong>서비스 이용:</strong> 접속 로그, IP 주소, 브라우저 종류, 방문 페이지</li>
+          <li><strong>쿠키:</strong> 세션 쿠키 및 분석용 쿠키(Google Analytics)</li>
+        </ul>
+        <h3>3. 수집 목적</h3>
+        <ul>
+          <li>계정 생성 및 본인 인증</li>
+          <li>모니터링 대시보드 및 분석 리포트 제공</li>
+          <li>뉴스레터 및 서비스 알림 발송</li>
+          <li>이용 통계를 통한 서비스 개선</li>
+          <li>고객 문의 대응</li>
+        </ul>
+        <h3>4. 보유 및 파기</h3>
+        <p>개인정보는 서비스 이용 기간 동안 보유합니다. 회원 탈퇴 시 30일 이내에 모든 개인정보를 영구 삭제합니다. 단, 관계 법령에 따라 보존이 필요한 경우(전자상거래 기록: 5년 등)에는 해당 기간까지 보관합니다.</p>
+        <h3>5. 제3자 제공</h3>
+        <p>개인정보를 판매·교환·임대하지 않습니다. 다음의 경우에 한해 공유될 수 있습니다:</p>
+        <ul>
+          <li><strong>Google Analytics:</strong> 익명화된 이용 통계(서비스 개선 목적)</li>
+          <li><strong>결제 대행사:</strong> 유료 구독 결제 정보 처리(카드 정보는 당사에 저장하지 않음)</li>
+        </ul>
+        <h3>6. 이용자의 권리</h3>
+        <p>이용자는 언제든지 자신의 개인정보에 대해 열람, 정정, 삭제를 요청하거나, 처리 동의를 철회하거나, 데이터 이동을 요청하거나, 커뮤니케이션 수신을 거부할 수 있습니다. <a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a>으로 연락하거나 앱 내 설정에서 직접 처리하세요.</p>
+        <h3>7. 정보 보안</h3>
+        <p>HTTPS 암호화, 비밀번호 해시 저장, 접근 권한 관리, 정기 보안 점검 등 업계 표준 보안 조치를 적용하고 있습니다.</p>
+        <h3>8. 쿠키 및 추적</h3>
+        <p>FabWatch는 사이트 기능을 위한 필수 쿠키와 익명 이용 통계를 위한 Google Analytics(GA4)를 사용합니다. 브라우저 설정에서 비필수 쿠키를 비활성화할 수 있으며, 쿠키 비활성화 시 일부 기능이 제한될 수 있습니다.</p>
+        <h3>9. 방침 변경</h3>
+        <p>중요한 변경사항은 시행 최소 7일 전에 이메일 또는 사이트 공지를 통해 안내합니다. 시행일 이후 계속 이용 시 변경에 동의한 것으로 간주합니다.</p>
+        </span><span class="ja">
+        <h3>1. 個人情報取扱事業者</h3>
+        <p>FabWatchは株式会社エイティーエス（ATS、代表 ソン・ウヨン）が運営しています。所在地：大韓民国 京畿道 広州市 梧浦安路321-7、事業者登録番号：758-86-03148。個人情報に関するお問い合わせ：<a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a></p>
+        <h3>2. 収集する個人情報</h3>
+        <p>サービス提供に必要な最小限の情報のみを収集します：</p>
+        <ul>
+          <li><strong>会員登録：</strong>氏名、メールアドレス、会社名（任意）、パスワード（暗号化して保存）</li>
+          <li><strong>ニュースレター購読：</strong>メールアドレス</li>
+          <li><strong>サービス利用：</strong>アクセスログ、IPアドレス、ブラウザの種類、閲覧ページ</li>
+          <li><strong>Cookie：</strong>セッションCookieおよび分析用Cookie（Google Analytics）</li>
+        </ul>
+        <h3>3. 利用目的</h3>
+        <ul>
+          <li>アカウント作成および本人確認</li>
+          <li>モニタリング・ダッシュボードおよび分析レポートの提供</li>
+          <li>ニュースレターおよびサービス通知の送信</li>
+          <li>利用統計によるサービス改善</li>
+          <li>お問い合わせへの対応</li>
+        </ul>
+        <h3>4. 保有期間および廃棄</h3>
+        <p>個人情報はサービス利用期間中保有します。退会時には30日以内にすべての個人情報を完全に削除します。ただし、関係法令により保存が必要な場合（電子商取引の記録：5年など）は、その期間まで保管します。</p>
+        <h3>5. 第三者提供</h3>
+        <p>個人情報を販売・交換・貸与することはありません。以下の場合に限り共有されることがあります：</p>
+        <ul>
+          <li><strong>Google Analytics：</strong>匿名化された利用統計（サービス改善の目的）</li>
+          <li><strong>決済代行会社：</strong>有料購読の決済情報の処理（カード情報は当社に保存しません）</li>
+        </ul>
+        <h3>6. 利用者の権利</h3>
+        <p>利用者はいつでも、ご自身の個人情報の閲覧・訂正・削除の請求、取扱いへの同意の撤回、データポータビリティの請求、通信の受信拒否を行うことができます。<a href="mailto:contact@fabwatch.co.kr" style="color:var(--accent);">contact@fabwatch.co.kr</a>までご連絡いただくか、アプリ内の設定から直接手続きしてください。</p>
+        <h3>7. 情報セキュリティ</h3>
+        <p>HTTPS暗号化、パスワードのハッシュ化保存、アクセス権限の管理、定期的なセキュリティ点検など、業界標準のセキュリティ対策を講じています。</p>
+        <h3>8. Cookieおよびトラッキング</h3>
+        <p>FabWatchは、サイト機能に必要なCookieと、匿名の利用統計のためのGoogle Analytics（GA4）を使用しています。ブラウザの設定で必須でないCookieを無効にできますが、その場合一部の機能が制限されることがあります。</p>
+        <h3>9. ポリシーの変更</h3>
+        <p>重要な変更は、施行の7日以上前にメールまたはサイト上のお知らせでご案内します。施行日以降もご利用を続けた場合、変更に同意したものとみなします。</p>
+        <p><small>本ポリシーは韓国語版を正本とし、日本語版は参考訳です。</small></p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS OF SERVICE MODAL -->
+<div class="modal-overlay legal-modal" id="termsModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLegal('termsModal')">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1628" stroke-width="2.5" stroke-linecap="round" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        FabWatch
+      </div>
+      <p class="modal-subtitle">
+        <span class="en">Terms of Service</span>
+        <span class="ko">이용약관</span><span class="ja">利用規約</span>
+      </p>
+    </div>
+    <div class="modal-body">
+      <div class="legal-content">
+        <div class="effective">
+          <span class="en">Effective: November 19, 2026</span>
+          <span class="ko">시행일: 2026년 11월 19일</span><span class="ja">施行日：2026年11月19日</span>
+        </div>
+        <span class="en">
+        <h3>1. Service overview</h3>
+        <p>FabWatch provides satellite-based monitoring intelligence for semiconductor fabs and AI data centers. The service includes a web-based dashboard, analysis reports, data APIs, and email alerts. FabWatch is operated by ATS Inc. (주식회사 에이티에스).</p>
+        <h3>2. Acceptance of terms</h3>
+        <p>By creating an account or using FabWatch, you agree to these Terms of Service. If you do not agree, do not use the service. Corporate accounts bind the organization represented by the registering individual.</p>
+        <h3>3. Account responsibilities</h3>
+        <ul>
+          <li>You must provide accurate registration information</li>
+          <li>You are responsible for maintaining the confidentiality of your credentials</li>
+          <li>You must notify us immediately of any unauthorized use</li>
+          <li>One account per individual; corporate accounts may have multiple authorized users</li>
+        </ul>
+        <h3>4. Service tiers and payment</h3>
+        <p><strong>Free:</strong> Limited access to public fab data, monthly highlight report, and newsletter. <strong>Pro ($199/month):</strong> Full dashboard, weekly updates, email alerts, basic API. <strong>Enterprise ($999+/month):</strong> Custom fabs, full API, dedicated analyst, raw satellite data. Prices are in USD and exclude applicable taxes. Paid subscriptions renew automatically; cancel anytime before the next billing cycle.</p>
+        <h3>5. Data sources and accuracy</h3>
+        <p>FabWatch uses publicly available satellite data from NASA VIIRS, ESA Copernicus (Sentinel-1, Sentinel-2, Sentinel-5P), and USGS Landsat. While we strive for accuracy, satellite-derived insights are estimates based on remote sensing analysis and should not be the sole basis for investment or business decisions. We do not guarantee the accuracy, completeness, or timeliness of any data or analysis.</p>
+        <h3>6. Intellectual property</h3>
+        <p>All FabWatch content — including analysis reports, dashboard design, scoring algorithms, and proprietary datasets — is owned by ATS Inc. Underlying satellite imagery remains the property of its respective agencies (NASA, ESA, USGS) under their open-data licenses. Users may not redistribute, resell, or publicly display FabWatch content without written permission.</p>
+        <h3>7. Acceptable use</h3>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the service for illegal purposes or to violate any applicable laws</li>
+          <li>Attempt to reverse-engineer, scrape, or extract data beyond API limits</li>
+          <li>Share account credentials or allow unauthorized access</li>
+          <li>Use the service to manipulate securities markets or engage in insider trading</li>
+          <li>Resell or redistribute FabWatch data without authorization</li>
+        </ul>
+        <h3>8. Disclaimer of warranties</h3>
+        <p>THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. ATS INC. DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. Satellite data may be affected by weather, sensor availability, and processing delays.</p>
+        <h3>9. Limitation of liability</h3>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, ATS INC. SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM USE OF THE SERVICE, INCLUDING BUT NOT LIMITED TO INVESTMENT LOSSES, LOST PROFITS, OR DATA LOSS. OUR TOTAL LIABILITY SHALL NOT EXCEED THE FEES PAID BY YOU IN THE 12 MONTHS PRECEDING THE CLAIM.</p>
+        <h3>10. Termination</h3>
+        <p>Either party may terminate at any time. We may suspend or terminate accounts that violate these terms. Upon termination, your right to access the service ceases; data export is available for 30 days.</p>
+        <h3>11. Governing law</h3>
+        <p>These terms are governed by the laws of the Republic of Korea. Disputes shall be submitted to the exclusive jurisdiction of the Suwon District Court.</p>
+        <h3>12. Changes to terms</h3>
+        <p>We may modify these terms with at least 7 days' notice via email or on-site announcement. Continued use after the effective date constitutes acceptance.</p>
+        </span>
+        <span class="ko">
+        <h3>1. 서비스 개요</h3>
+        <p>FabWatch는 반도체 팹과 AI 데이터센터를 위한 위성 기반 모니터링 인텔리전스를 제공합니다. 서비스에는 웹 대시보드, 분석 리포트, 데이터 API, 이메일 알림이 포함됩니다. FabWatch는 주식회사 에이티에스(ATS)가 운영합니다.</p>
+        <h3>2. 약관 동의</h3>
+        <p>계정을 생성하거나 FabWatch를 이용함으로써 본 이용약관에 동의하게 됩니다. 동의하지 않는 경우 서비스를 이용하지 마십시오. 기업 회원의 경우 등록자가 소속 조직을 대리하여 약관에 동의하는 것으로 간주합니다.</p>
+        <h3>3. 계정 책임</h3>
+        <ul>
+          <li>정확한 등록 정보를 제공해야 합니다</li>
+          <li>계정 자격 증명의 기밀 유지 책임은 이용자에게 있습니다</li>
+          <li>무단 사용 발견 시 즉시 통보해야 합니다</li>
+          <li>개인당 1개 계정; 기업 계정은 복수의 인가 사용자 가능</li>
+        </ul>
+        <h3>4. 요금제 및 결제</h3>
+        <p><strong>Free:</strong> 공개 팹 데이터 제한 접근, 월간 하이라이트 리포트, 뉴스레터. <strong>Pro ($199/월):</strong> 전체 대시보드, 주간 업데이트, 이메일 알림, 기본 API. <strong>Enterprise ($999+/월):</strong> 커스텀 팹, 전체 API, 전담 애널리스트, 원본 위성 데이터. 가격은 USD 기준이며 부가세 별도입니다. 유료 구독은 자동 갱신되며, 다음 결제 주기 전 언제든 해지 가능합니다.</p>
+        <h3>5. 데이터 출처 및 정확성</h3>
+        <p>FabWatch는 NASA VIIRS, ESA 코페르니쿠스(Sentinel-1, Sentinel-2, Sentinel-5P), USGS 랜드샛의 공개 위성 데이터를 사용합니다. 정확성을 위해 노력하지만, 위성 기반 인사이트는 원격탐사 분석에 기반한 추정치이며, 투자 또는 사업 결정의 유일한 근거로 사용되어서는 안 됩니다. 데이터 또는 분석의 정확성, 완전성, 적시성을 보장하지 않습니다.</p>
+        <h3>6. 지적재산권</h3>
+        <p>분석 리포트, 대시보드 디자인, 스코어링 알고리즘, 독점 데이터셋 등 모든 FabWatch 콘텐츠는 주식회사 에이티에스의 소유입니다. 기초 위성 영상은 해당 기관(NASA, ESA, USGS)의 공개 데이터 라이선스에 따릅니다. 서면 허가 없이 FabWatch 콘텐츠를 재배포, 재판매 또는 공개 게시할 수 없습니다.</p>
+        <h3>7. 허용 범위</h3>
+        <p>다음 행위는 금지됩니다:</p>
+        <ul>
+          <li>불법적 목적 또는 관련 법령 위반 목적으로 서비스 이용</li>
+          <li>API 제한을 초과하는 역공학, 스크래핑, 데이터 추출 시도</li>
+          <li>계정 자격 증명 공유 또는 무단 접근 허용</li>
+          <li>증권 시장 조작이나 내부자 거래에 서비스 활용</li>
+          <li>허가 없이 FabWatch 데이터 재판매 또는 재배포</li>
+        </ul>
+        <h3>8. 면책 조항</h3>
+        <p>서비스는 "있는 그대로" 제공되며 어떠한 종류의 보증도 하지 않습니다. 주식회사 에이티에스는 상품성, 특정 목적 적합성, 비침해를 포함한 모든 명시적·묵시적 보증을 부인합니다. 위성 데이터는 기상, 센서 가용성, 처리 지연의 영향을 받을 수 있습니다.</p>
+        <h3>9. 책임 제한</h3>
+        <p>관련 법률이 허용하는 최대 범위 내에서, 주식회사 에이티에스는 서비스 이용으로 인한 간접적, 부수적, 특별 또는 결과적 손해(투자 손실, 이익 손실, 데이터 손실 포함)에 대해 책임지지 않습니다. 당사의 총 책임은 청구 발생 전 12개월간 이용자가 지불한 요금을 초과하지 않습니다.</p>
+        <h3>10. 계약 해지</h3>
+        <p>어느 당사자든 언제든 해지할 수 있습니다. 약관 위반 계정은 정지 또는 해지될 수 있습니다. 해지 시 서비스 접근 권한이 중단되며, 30일간 데이터 내보내기가 가능합니다.</p>
+        <h3>11. 준거법</h3>
+        <p>본 약관은 대한민국 법률의 적용을 받습니다. 분쟁은 수원지방법원의 전속 관할로 합니다.</p>
+        <h3>12. 약관 변경</h3>
+        <p>약관 변경 시 최소 7일 전 이메일 또는 사이트 공지를 통해 안내합니다. 시행일 이후 계속 이용 시 변경에 동의한 것으로 간주합니다.</p>
+        </span><span class="ja">
+        <h3>1. サービス概要</h3>
+        <p>FabWatchは、半導体ファブとAIデータセンターを対象とした衛星ベースのモニタリング・インテリジェンスを提供します。サービスにはWebダッシュボード、分析レポート、データAPI、メール通知が含まれます。FabWatchは株式会社エイティーエス（ATS）が運営しています。</p>
+        <h3>2. 規約への同意</h3>
+        <p>アカウントを作成し、またはFabWatchを利用することで、本利用規約に同意したものとみなされます。同意いただけない場合は、サービスをご利用にならないでください。法人会員の場合、登録者が所属組織を代理して規約に同意したものとみなします。</p>
+        <h3>3. アカウントの責任</h3>
+        <ul>
+          <li>正確な登録情報を提供する必要があります</li>
+          <li>アカウントの認証情報の管理責任は利用者にあります</li>
+          <li>不正利用を発見した場合は直ちに通知する必要があります</li>
+          <li>1人につき1アカウント。法人アカウントは複数の許可ユーザーが利用可能</li>
+        </ul>
+        <h3>4. 料金プランと支払い</h3>
+        <p><strong>Free：</strong>公開ファブデータへの限定アクセス、月次ハイライトレポート、ニュースレター。<strong>Pro（月額199ドル）：</strong>フルダッシュボード、週次更新、メールアラート、基本API。<strong>Enterprise（月額999ドル〜）：</strong>カスタムファブ、フルAPI、専任アナリスト、元の衛星データ。価格は米ドル建て・税別です。有料購読は自動更新され、次回の請求サイクル前であればいつでも解約できます。</p>
+        <h3>5. データの出典と正確性</h3>
+        <p>FabWatchは、NASA VIIRS、ESAコペルニクス（Sentinel-1、Sentinel-2、Sentinel-5P）、USGSランドサットの公開衛星データを使用しています。正確性に努めていますが、衛星ベースのインサイトはリモートセンシング分析に基づく推定値であり、投資または事業判断の唯一の根拠として使用すべきではありません。データまたは分析の正確性、完全性、適時性を保証するものではありません。</p>
+        <h3>6. 知的財産権</h3>
+        <p>分析レポート、ダッシュボードのデザイン、スコアリング・アルゴリズム、独自データセットなど、FabWatchのすべてのコンテンツは株式会社エイティーエスに帰属します。基礎となる衛星画像は、各機関（NASA、ESA、USGS）のオープンデータライセンスに従います。書面による許可なく、FabWatchのコンテンツを再配布、再販売、または公開掲載することはできません。</p>
+        <h3>7. 禁止事項</h3>
+        <p>以下の行為を禁止します：</p>
+        <ul>
+          <li>違法な目的または関係法令に違反する目的でのサービス利用</li>
+          <li>APIの制限を超えるリバースエンジニアリング、スクレイピング、データ抽出の試み</li>
+          <li>アカウント認証情報の共有または不正アクセスの許可</li>
+          <li>相場操縦やインサイダー取引へのサービスの利用</li>
+          <li>許可なくFabWatchのデータを再販売または再配布すること</li>
+        </ul>
+        <h3>8. 免責事項</h3>
+        <p>サービスは「現状有姿」で提供され、いかなる種類の保証も行いません。株式会社エイティーエスは、商品性、特定目的への適合性、非侵害を含む、明示または黙示のすべての保証を否認します。衛星データは、天候、センサーの稼働状況、処理の遅延の影響を受ける場合があります。</p>
+        <h3>9. 責任の制限</h3>
+        <p>適用法令が許す最大限の範囲で、株式会社エイティーエスは、サービスの利用によって生じた間接的、付随的、特別または結果的な損害（投資損失、逸失利益、データ損失を含む）について責任を負いません。当社の責任の総額は、請求発生前12か月間に利用者が支払った料金を上限とします。</p>
+        <h3>10. 契約の解除</h3>
+        <p>いずれの当事者もいつでも解約できます。規約に違反したアカウントは、停止または解約されることがあります。解約時にはサービスへのアクセスが停止され、30日間はデータのエクスポートが可能です。</p>
+        <h3>11. 準拠法</h3>
+        <p>本規約は大韓民国の法律に準拠します。紛争は水原地方法院を専属的合意管轄裁判所とします。</p>
+        <h3>12. 規約の変更</h3>
+        <p>規約を変更する場合は、7日以上前にメールまたはサイト上のお知らせでご案内します。施行日以降もご利用を続けた場合、変更に同意したものとみなします。</p>
+        <p><small>本規約は韓国語版を正本とし、日本語版は参考訳です。</small></p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WAITLIST MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-header">
+      <div class="modal-logo">
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0B1628" stroke-width="2.5" stroke-linecap="round" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </span>
+        FabWatch
+      </div>
+      <p class="modal-subtitle">
+        <span class="en">Launching Q1 2027 — join the waitlist for early access</span>
+        <span class="ko">2027년 1분기 출시 예정 — 얼리 액세스 대기 등록</span><span class="ja">2027年第1四半期リリース予定 — アーリーアクセスのウェイトリストに登録</span>
+      </p>
+    </div>
+    <div class="modal-body">
+      <div id="waitlist-form">
+        <div class="form-group">
+          <label class="form-label"><span class="en">Name</span><span class="ko">이름</span><span class="ja">お名前</span></label>
+          <input type="text" class="form-input" id="wl-name" placeholder="">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="en">Work Email</span><span class="ko">업무 이메일</span><span class="ja">勤務先メールアドレス</span></label>
+          <input type="email" class="form-input" id="wl-email" placeholder="name@company.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="en">Role</span><span class="ko">직종</span><span class="ja">職種</span></label>
+          <select class="form-input" id="wl-role" style="cursor:pointer;">
+            <option value="" disabled selected><span class="en">Select your role</span></option>
+            <option value="analyst">Analyst / 애널리스트</option>
+            <option value="investor">Investor / 투자자</option>
+            <option value="researcher">Researcher / 연구원</option>
+            <option value="journalist">Journalist / 기자</option>
+            <option value="corporate">Corporate / 기업 담당자</option>
+            <option value="government">Government / 정부·공공</option>
+            <option value="other">Other / 기타</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span class="en">Company <span style="opacity:.5">(optional)</span></span><span class="ko">소속 <span style="opacity:.5">(선택)</span></span><span class="ja">所属 <span style="opacity:.5">（任意）</span></span></label>
+          <input type="text" class="form-input" id="wl-company" placeholder="">
+        </div>
+        <button class="form-submit" onclick="submitWaitlist(event)">
+          <span class="en">Join the Waitlist</span><span class="ko">대기 등록하기</span><span class="ja">ウェイトリストに登録</span>
+        </button>
+        <p style="text-align:center;font-size:12px;color:#94A3B8;margin-top:12px;line-height:1.6;">
+          <span class="en">We'll notify you when early access opens. No spam, unsubscribe anytime.</span>
+          <span class="ko">얼리 액세스가 시작되면 알려드립니다. 스팸 없음, 언제든 수신 거부 가능.</span><span class="ja">アーリーアクセス開始時にお知らせします。スパムは送りません。いつでも配信停止できます。</span>
+        </p>
+      </div>
+      <div id="waitlist-success" style="display:none;text-align:center;padding:24px 0;">
+        <div style="font-size:48px;margin-bottom:16px;">&#10003;</div>
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">
+          <span class="en">You're on the list!</span>
+          <span class="ko">등록이 완료되었습니다!</span><span class="ja">登録が完了しました！</span>
+        </h3>
+        <p style="color:#94A3B8;font-size:14px;line-height:1.6;">
+          <span class="en">We'll send you an email when early access is available.<br>Thank you for your interest in FabWatch.</span>
+          <span class="ko">얼리 액세스가 시작되면 이메일로 안내드리겠습니다.<br>FabWatch에 관심 가져주셔서 감사합니다.</span><span class="ja">アーリーアクセスの準備ができ次第、メールでご案内します。<br>FabWatchにご関心をお寄せいただき、ありがとうございます。</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARENT COMPANY BANNER -->
+<div class="parent-banner">
+  <div class="inner">
+    <span class="pb-label">
+      <span class="en">A service of</span>
+      <span class="ko">운영사:</span><span class="ja">運営：</span>
+    </span>
+    <a class="pb-link" href="http://allths.com/sh_page/page33.php" target="_blank" rel="noopener">
+      <span class="en">ATS Inc. — Thermal Interface Materials Solution Provider</span>
+      <span class="ko">(주)에이티에스 — 방열소재 솔루션 기업</span><span class="ja">株式会社エイティーエス — 放熱材料ソリューション企業</span>
+      <span class="pb-arrow">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="font-size:18px;">
+          <span class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1628" stroke-width="2.5" stroke-linecap="round" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+          FabWatch
+        </div>
+        <p><span class="en">Satellite intelligence for the semiconductor industry. Monitoring 24 fabs in 6 countries and the EU with 6 independent satellite channels.</span><span class="ko">반도체 산업을 위한 위성 인텔리전스. 6개국과 EU의 24개 팹을 6개 독립 위성 채널로 모니터링합니다.</span><span class="ja">半導体産業のための衛星インテリジェンス。6か国とEUの24ファブを、6つの独立した衛星チャネルでモニタリングしています。</span></p>
+      </div>
+      <div class="footer-col">
+        <h4><span class="en">Product</span><span class="ko">서비스</span><span class="ja">サービス</span></h4>
+        <ul>
+          <li><a href="/monitoring/"><span class="en">Dashboard</span><span class="ko">대시보드</span><span class="ja">ダッシュボード</span></a></li>
+          <li><a href="/reports/"><span class="en">Reports</span><span class="ko">리포트</span><span class="ja">レポート</span></a></li>
+          <li><a href="/pricing/"><span class="en">Pricing</span><span class="ko">요금제</span><span class="ja">料金</span></a></li>
+          <li><a href="/monitoring/#demo"><span class="en">Live Demo</span><span class="ko">데모</span><span class="ja">デモ</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="en">Company</span><span class="ko">회사</span><span class="ja">会社</span></h4>
+        <ul>
+          <li><a href="/about/#team"><span class="en">About Us</span><span class="ko">팀 소개</span><span class="ja">チーム紹介</span></a></li>
+          <li><a href="/reports/"><span class="en">Sample Reports</span><span class="ko">샘플 리포트</span><span class="ja">サンプルレポート</span></a></li>
+          <li><a href="/about/#usecases"><span class="en">Use Cases</span><span class="ko">활용 사례</span><span class="ja">活用事例</span></a></li>
+          <li><a href="/#faq"><span class="en">FAQ</span><span class="ko">FAQ</span><span class="ja">FAQ</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4><span class="en">Legal</span><span class="ko">법적 고지</span><span class="ja">法的情報</span></h4>
+        <ul>
+          <li><a href="#" onclick="openLegal('privacyModal');return false;"><span class="en">Privacy Policy</span><span class="ko">개인정보처리방침</span><span class="ja">プライバシーポリシー</span></a></li>
+          <li><a href="#" onclick="openLegal('termsModal');return false;"><span class="en">Terms of Service</span><span class="ko">이용약관</span><span class="ja">利用規約</span></a></li>
+          <li><a href="#" onclick="openLegal('privacyModal');return false;"><span class="en">Data Sources</span><span class="ko">데이터 출처</span><span class="ja">データの出典</span></a></li>
+          <li><a href="mailto:contact@fabwatch.co.kr">contact@fabwatch.co.kr</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" style="flex-direction:column;align-items:flex-start;gap:8px;">
+      <span style="color:#64748B;font-size:12px;line-height:1.6;">
+        <span class="en">Operated by ATS Inc. (주식회사 에이티에스) · CEO: Wooyeon Son · Biz No. 758-86-03148<br>321-7, Opoan-ro, Gwangju-si, Gyeonggi-do, Republic of Korea</span>
+        <span class="ko">운영: 주식회사 에이티에스(ATS) · 대표: 손우연 · 사업자등록번호: 758-86-03148<br>경기도 광주시 오포안로 321-7(추자동)</span><span class="ja">運営：株式会社エイティーエス（ATS）· 代表：ソン・ウヨン · 事業者登録番号：758-86-03148<br>大韓民国 京畿道 広州市 梧浦安路321-7（楸子洞）</span>
+      </span>
+      <div style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:8px;">
+        <span>
+          <span class="en">&copy; 2026 ATS Inc. All rights reserved.</span>
+          <span class="ko">&copy; 2026 주식회사 에이티에스. All rights reserved.</span><span class="ja">&copy; 2026 株式会社エイティーエス. All rights reserved.</span>
+        </span>
+        <span style="color:#475569;">
+          <span class="en">Data: NASA VIIRS · ESA Copernicus · USGS Landsat</span>
+          <span class="ko">데이터: NASA VIIRS · ESA Copernicus · USGS Landsat</span><span class="ja">データ：NASA VIIRS · ESA Copernicus · USGS Landsat</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=87914033"></script>
+</body>
+</html>
